@@ -1,5 +1,5 @@
-import board_object
-import board
+from board_object import Board_Object
+from board import Board
 import random
 
 class Enemy(Board_Object):
@@ -13,28 +13,33 @@ class Enemy(Board_Object):
         else:
             return False
     
-    def __init__(self, position):
-        No_of_enemies+=1
-        super(Enemy,self).__init__(position)
+    def __init__(self):
+        Enemy.No_of_enemies+=1
+        super(Enemy,self).__init__()
     
     def move(self):
-        left = list(self.position[0]-1,self.position[1])
-        right = list(self.position[0]+1,self.position[1])
-        up = list(self.position[0], self.position[1]-1)
-        down = list(self.position[0], self.position[1]+1)
+        left = [self.position[0]-1,self.position[1]]
+        right = [self.position[0]+1,self.position[1]]
+        up = [self.position[0], self.position[1]-1]
+        down = [self.position[0], self.position[1]+1]
         
         possible_new_positions = [left, right, up, down]
+        #d
+        print(possible_new_positions,"possible_new_positions")
 
         choices = []
         for position in possible_new_positions:
-            if board.is_within_board(possible_new_position) and board.is_empty(possible_new_position):
+            print(board.is_within_board(position))
+            print(board.is_empty(position))
+            if board.is_within_board(position) and board.is_empty(position):
                 choices.append(position)
+        print(choices,end="choices")
         
         self.position = random.choice(choices)
 
         
 
     
-    def __del__(self)
+    def __del__(self):
         Enemy.No_of_enemies -=1
-        board.board[self.position[0],self.position[1]] = Nothing(self.position)
+        board.board[self.position[0]][self.position[1]] = Nothing()

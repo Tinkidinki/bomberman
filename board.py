@@ -1,3 +1,4 @@
+from walls import Permanant_Wall
 
 class Board():
     
@@ -6,7 +7,7 @@ class Board():
         #The initial config depends on the level
         self.board = board
         
-        #dimesions is a 2-list with max x and max y.
+        #dimesions is a 2-list with number of x and number of y
         #I'm using 0-numbering for the board
         self.dimensions = dimensions
     
@@ -14,14 +15,17 @@ class Board():
         return (position[0]>=0 and position[0] <= self.dimensions[0] and position[1]>=0 and position[1]<=self.dimensions[1])
 
     def is_empty(self, position):
-        return (self.board[position[0], position[1]]=="")
+        return (isinstance(self.board[position[0]][position[1]],Nothing))
 
     def display(self): #I will convert this to the right size later
-        symbol =   {Permanant_Wall:"#", Brick_Wall:"/",Player: "B",Enemy: "E",Explosion: "e", Bomb:"O", Nothing:""}
+        symbol =   {Permanant_Wall:"#", Brick_Wall:"/",Player: "B",Enemy: "E", Bomb:"O", Nothing:" "}
+        #make explosion also happen
+        for i in range(self.dimensions[0]):
+            for j in range(self.dimensions[1]):
+                print (symbol[type(self.board[i][j])] , end = "")
+            print()
 
-        for i in range(self.dimensions[0]+1):
-            for j in range(self.dimensions[1]+1):
-                print (symbol[self.board[i,j].__type__]),
-            print
-
-                
+    def update_positions(self):
+        for i in range(self.dimensions[0]):
+            for j in range(self.dimensions[1]):
+                self.board[i][j].position = [i,j]       

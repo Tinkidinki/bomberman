@@ -1,19 +1,20 @@
-import board_object
+from board_object import Board_Object
+from board import Board
 import board
 import time
 
 class Bomb(Board_Object):
     
     Ticking_time = 5 #Change accordingly
+    Exploding_time = 3
     No_of_bombs = 0
 
     @staticmethod
     def is_present():
-        return (No_of_bombs > 0)
+        return (Bomb.No_of_bombs > 0)
            
     
-    def __init__(position):
-        
+    def __init__(self):
         Bomb.No_of_bombs +=1
         super(Bomb,self).__init__()
         self.timer = time.time()
@@ -27,11 +28,14 @@ class Bomb(Board_Object):
         #I will add the explosion part later, and the time for which it explodes.
 
     def exploded(self):
-        return (time.time() - self.timer() > Bomb.Ticking_time)
+        return (Bomb.Ticking_time  <= time.time() - self.timer() <= Bomb.Exploding_time)
+
+    def explosion_over(self):
+        return (time.time() - self.timer() > Bomb.Ticking_time + Bomb.Exploding_time)
         
 
     def __del__(self):
         Bomb.No_of_bombs-=1
-        board.board[self.position[0],self.position[1]] = Nothing(self.position)
+        board.board[self.position[0]][self.position[1]] = Nothing(self.position)
 
     
