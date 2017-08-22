@@ -1,6 +1,5 @@
 from board_object import Board_Object
 from board import Board
-import board
 import time
 
 class Bomb(Board_Object):
@@ -14,28 +13,34 @@ class Bomb(Board_Object):
         return (Bomb.No_of_bombs > 0)
            
     
-    def __init__(self):
-        Bomb.No_of_bombs +=1
+    def __init__(self,position):
         super(Bomb,self).__init__()
-        self.timer = time.time()
+        self.position = position
+        board.board[self.position[0]][self.position[1]] = self
+        print("IN THE BOMB INIT METHOD ",self.position)
+        Bomb.No_of_bombs +=1
 
-        left = list(self.position[0]-1,self.position[1])
-        right = list(self.position[0]+1,self.position[1])
-        up = list(self.position[0], self.position[1]-1)
-        down = list(self.position[0], self.position[1]+1)
+        self.timer = 0
+        print("DEBUGGING LIST INDEX OUT OF RANGE")
+        print(self.position[0],self.position[1])
+        left = [self.position[0],self.position[1]-1]
+        right = [self.position[0],self.position[1]+1]
+        up = [self.position[0]-1, self.position[1]]
+        down = [self.position[0]+1, self.position[1]]
         
-        self.radius = [left,right,up,down]
+        self.radius = [left,right,up,down,self.position]
         #I will add the explosion part later, and the time for which it explodes.
 
     def exploded(self):
-        return (Bomb.Ticking_time  <= time.time() - self.timer() <= Bomb.Exploding_time)
+        return (self.timer > Bomb.Ticking_time)
 
     def explosion_over(self):
-        return (time.time() - self.timer() > Bomb.Ticking_time + Bomb.Exploding_time)
+        return (self.timer > Bomb.Ticking_time + Bomb.Exploding_time)
         
 
-    def __del__(self):
+    def die(self):
         Bomb.No_of_bombs-=1
-        board.board[self.position[0]][self.position[1]] = Nothing(self.position)
+        board.board[self.position[0]][self.position[1]] = Nothing()
+
 
     

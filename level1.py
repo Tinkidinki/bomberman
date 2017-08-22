@@ -1,4 +1,5 @@
 import builtins
+import time
 
 from input_char import getch
 builtins.getch = getch
@@ -30,41 +31,45 @@ builtins.each_frame = each_frame
 builtins.do_all_checks = do_all_checks
 
 builtins.player = Player()
-builtins.enemy = Enemy()
+#print(player, "level1")
+#builtins.enemy = Enemy()
 
 #d
-print(Nothing)
-n = Nothing()
-print(n)
+#print(Nothing)
+#n = Nothing()
+#print(n)
 
 #It might be useful to remove position argument completely for Nothing() and Permanant_Wall() objects
 #Oh god, this is circular. How did it take me this long to figure.
 
-level1_board = [[player, Permanant_Wall(),Nothing(),Brick_Wall()],
-[Nothing(),Nothing(),enemy,Nothing()],
-[Permanant_Wall(),Nothing(),Permanant_Wall(),Nothing()],
-[Nothing(),Permanant_Wall(),Nothing(),Nothing()]]
+level1_board = [[Enemy(), Permanant_Wall(),player,Nothing(),Nothing()],
+[Nothing(),Nothing(),Brick_Wall(),Nothing(),Brick_Wall()],
+[Permanant_Wall(),Nothing(),Permanant_Wall(),Nothing(),Enemy()],
+[Nothing(),Permanant_Wall(),Nothing(),Nothing(),Nothing()],
+[Permanant_Wall(),Nothing(),Enemy(),Brick_Wall(),Nothing()]]
 
 
-dimensions = [4,4]
+dimensions = [5,5]
 
 builtins.board = Board(level1_board,dimensions)
 
 #d
-for i in level1_board:
-    for j in i:
-        print (j.position,end = " ")
-    print()
+# for i in level1_board:
+#     for j in i:
+#         print (j.position,end = " ")
+#     print()
 
 board.update_positions()
 
 #d
-for i in level1_board:
-    for j in i:
-        print (j.position, end=" ")
-    print()
+# for i in level1_board:
+#     for j in i:
+#         print (j.position, end=" ")
+#     print()
 
-print(Permanant_Wall)
+#print(Permanant_Wall)
 board.display()
-each_frame()
+#print(player.position)
+while True:
+    each_frame()
 
