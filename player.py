@@ -1,5 +1,7 @@
 #from board_object import Board_Object
 #from board import Board
+from nothing import Nothing
+import builtins
 
 class Player(Board_Object):
     
@@ -15,29 +17,39 @@ class Player(Board_Object):
     def __init__(self):
         Player.No_of_players+=1
         super(Player,self).__init__()
+        self.alive = True
     
     def move(self, user_input):
         possible_new_position = []
 
         if user_input == 'a':
-            possible_new_position = list(self.position[0]-1,self.position[1])
+            possible_new_position = [self.position[0],self.position[1]-1]
         elif user_input == 's':
-            possible_new_position = list(self.position[0], self.position[1]+1)
+            possible_new_position = [self.position[0]+1, self.position[1]]
         elif user_input == 'd':
-            possible_new_position = list(self.position[0]+1,self.position[1])
+            possible_new_position = [self.position[0],self.position[1]+1]
         elif user_input == 'w':
-            possible_new_position = list(self.position[0], self.position[1]-1)
+            possible_new_position = [self.position[0]-1, self.position[1]]
         
+        print(possible_new_position)
+        #print(board.is_within_board(possible_new_position),"is within board")
+        #print(board.is_empty(possible_new_position), "is empty")
         if board.is_within_board(possible_new_position) and board.is_empty(possible_new_position):
+            if board.board[self.position[0]][self.position[1]] == self: 
+                board.board[self.position[0]][self.position[1]] = Nothing()
             self.position = possible_new_position
+            board.board[self.position[0]][self.position[1]] = self
 
     def drop_bomb(self):
-        bomb = Bomb(self.position)
+        builtins.bomb = Bomb(self.position)
+        print ("IN THE DROB BOMB METHOD - BOMB POSITION",self.position)
     
-    def __del__(self):
-        e  = Enemy()
-        print(Enemy)
-        print(e)
-        print(Nothing)
+    def die(self):
+        # e  = Enemy()
+        # print(Enemy)
+        # print(e)
+        # print(Nothing)
         Player.No_of_players -=1
         board.board[self.position[0]][self.position[1]] = Nothing()
+        self.alive = False
+        
