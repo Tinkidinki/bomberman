@@ -17,7 +17,8 @@ class Player(Board_Object):
     def __init__(self):
         Player.No_of_players+=1
         super(Player,self).__init__()
-        self.alive = True
+        self.lives = 5 #Obviously bad coding style, I'll put this in a variable later
+        self.score = 0
     
     def move(self, user_input):
         possible_new_position = []
@@ -49,7 +50,11 @@ class Player(Board_Object):
         # print(Enemy)
         # print(e)
         # print(Nothing)
-        Player.No_of_players -=1
-        board.board[self.position[0]][self.position[1]] = Nothing()
-        self.alive = False
+        if self.lives == 0:
+            Player.No_of_players -=1
+            board.board[self.position[0]][self.position[1]] = Nothing()
+        else:
+            self.lives -=1
+        
+            
         

@@ -91,14 +91,19 @@ class Board():
 
         
         #Actually printing the board. Phew!
-        print('-'*(self.dimensions[1]*4+2))
+        print(('#'*(self.dimensions[1]*4+4)))
+        print(('#'*(self.dimensions[1]*4+4)))
         for i in range(self.dimensions[0]*2):
-            print('|',end="")
+            print('##',end="")
             for j in range(self.dimensions[1]*4):
                 print (to_print[i][j], end = "")
-            print('|',end="")
+            print('##',end="")
             print()
-        print('-'*(self.dimensions[1]*4+2))
+        print(('#'*(self.dimensions[1]*4+4)))
+        print(('#'*(self.dimensions[1]*4+4)))
+
+        #Printing the score and lives:
+        print("SCORE:",player.score, "\tNO. OF LIVES:",player.lives)
         
 
     def update_positions(self):

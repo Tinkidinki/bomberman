@@ -21,10 +21,12 @@ from asynchronous_input import get_char_keyboard_nonblock
 
 def win():
     print("YOU WIN")
+    print("YOUR FINAL SCORE",player.score)
     sys.exit()
 
 def lose():
     print("YOU LOSE")
+    print("YOUR FINAL SCORE",player.score)
     sys.exit()
 
 
@@ -43,7 +45,7 @@ def do_all_checks():
     
     if Bomb.is_present():
         bomb.timer+=1
-        print("BOMB TIMER:",bomb.timer)
+        #print("BOMB TIMER:",bomb.timer)
         if bomb.exploded():
             if player.position in bomb.radius:
                 player.die()
@@ -68,7 +70,7 @@ def do_all_checks():
         if player.position == enemy.position: #for now only one enemy, might expand on this.
     #5
             #print(player)
-            player.move('s')
+            #player.move('s')
             #global player
             player.die()
         
@@ -106,36 +108,26 @@ def do_all_actions(user_input):
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
     
+def each_frame():
+    do_all_checks()
+    board.big_display()
+    time.sleep(0.3)
+    clear_screen()
 
-def each_frame():  #I need to have threading here.
-    
-    #print (player.position)
+def main(): 
+    #moving enemy
     for enemy in Enemy.enemies:
         enemy.move()
-    #print(player.position,"player position AFTER ENEMY BEFORE PLAYER")
-    #print(enemy.position, "enemy position AFTER ENEMY BEFORE PLAYER")
-    #print("No. of enemies after enemy move", Enemy.No_of_enemies)
-    do_all_checks()
-    board.big_display()
-    time.sleep(0.3)
-    clear_screen()
-    #board.display_objects()
+    #changing frame
+    each_frame()
+    
+    #moving player (if input given)
     user_input = take_user_input("")
     do_all_actions(user_input)
-    #print(player.position, "player position AFTER PLAYER")
-    #print(enemy.position, "enemy position AFTER PLAYER")
-    do_all_checks()
-    board.big_display()
-    time.sleep(0.3)
-    clear_screen()
-    #board.display_objects()
-    #print("No. of enemies after player", Enemy.No_of_enemies)
-    
-    
-    #print("No. of enemies after player and checks", Enemy.No_of_enemies)
-    #time.sleep(1)
-    #clear_screen()
 
+    #changing frame
+    each_frame()
+    
 
 #DEBUGGING PURPOSES
 # def each_frame():  #I need to have threading here.

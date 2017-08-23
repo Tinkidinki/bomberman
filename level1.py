@@ -26,9 +26,8 @@ builtins.Enemy = Enemy
 from nothing import Nothing
 builtins.Nothing = Nothing
 
-from main import each_frame, do_all_checks
-builtins.each_frame = each_frame
-builtins.do_all_checks = do_all_checks
+from main import main
+builtins.main = main
 
 builtins.player = Player()
 #print(player, "level1")
@@ -44,9 +43,9 @@ builtins.player = Player()
 
 level1_board = [[Enemy(), Permanant_Wall(),player,Nothing(),Nothing()],
 [Nothing(),Nothing(),Brick_Wall(),Nothing(),Brick_Wall()],
-[Permanant_Wall(),Nothing(),Permanant_Wall(),Nothing(),Enemy()],
+[Permanant_Wall(),Nothing(),Permanant_Wall(),Nothing(),Nothing()],
 [Nothing(),Permanant_Wall(),Nothing(),Nothing(),Nothing()],
-[Permanant_Wall(),Nothing(),Enemy(),Brick_Wall(),Nothing()]]
+[Permanant_Wall(),Nothing(),Nothing(),Brick_Wall(),Nothing()]]
 
 
 dimensions = [5,5]
@@ -71,5 +70,5 @@ board.update_positions()
 #board.display()
 #print(player.position)
 while True:
-    each_frame()
+    main()
 

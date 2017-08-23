@@ -8,6 +8,7 @@ class Brick_Wall(Board_Object):
     def die(self):
         board.board[self.position[0]][self.position[1]] = Nothing()
         Brick_Wall.walls.remove(self)
+        player.score +=20
 
 class Permanant_Wall(Board_Object):
     def __init__(self):

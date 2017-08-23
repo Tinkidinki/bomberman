@@ -28,7 +28,7 @@ class Bomb(Board_Object):
         up = [self.position[0]-1, self.position[1]]
         down = [self.position[0]+1, self.position[1]]
         
-        self.radius = [left,right,up,down,self.position]
+        self.radius = [left,right,up,down]
         #I will add the explosion part later, and the time for which it explodes.
 
     def exploded(self):

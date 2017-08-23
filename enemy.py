@@ -49,4 +49,5 @@ class Enemy(Board_Object):
         Enemy.No_of_enemies -=1
         Enemy.enemies.remove(self)
         board.board[self.position[0]][self.position[1]] = Nothing()
+        player.score+=100
         self.alive = False
