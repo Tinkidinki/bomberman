@@ -31,7 +31,7 @@ class Player(Board_Object):
         elif user_input == 'w':
             possible_new_position = [self.position[0]-1, self.position[1]]
         
-        print(possible_new_position)
+        #print(possible_new_position)
         #print(board.is_within_board(possible_new_position),"is within board")
         #print(board.is_empty(possible_new_position), "is empty")
         if board.is_within_board(possible_new_position) and board.is_empty(possible_new_position):
@@ -42,7 +42,7 @@ class Player(Board_Object):
 
     def drop_bomb(self):
         builtins.bomb = Bomb(self.position)
-        print ("IN THE DROB BOMB METHOD - BOMB POSITION",self.position)
+        #print ("IN THE DROB BOMB METHOD - BOMB POSITION",self.position)
     
     def die(self):
         # e  = Enemy()

@@ -17,7 +17,7 @@ class Bomb(Board_Object):
         super(Bomb,self).__init__()
         self.position = position
         board.board[self.position[0]][self.position[1]] = self
-        print("IN THE BOMB INIT METHOD ",self.position)
+        #print("IN THE BOMB INIT METHOD ",self.position)
         Bomb.No_of_bombs +=1
 
         self.timer = 0

@@ -4,6 +4,7 @@ import threading
 import os
 import time
 import sys
+from asynchronous_input import get_char_keyboard_nonblock
 
 #--------created utilities----------
 # from input_char import getch
@@ -66,7 +67,7 @@ def do_all_checks():
     for enemy in Enemy.enemies:
         if player.position == enemy.position: #for now only one enemy, might expand on this.
     #5
-            print(player)
+            #print(player)
             player.move('s')
             #global player
             player.die()
@@ -86,7 +87,8 @@ def do_all_checks():
 
 def take_user_input(x):
     #return input("\n")
-    return getch()
+    #return getch()
+    return get_char_keyboard_nonblock()
 
 def do_all_actions(user_input):
 
@@ -112,20 +114,55 @@ def each_frame():  #I need to have threading here.
         enemy.move()
     #print(player.position,"player position AFTER ENEMY BEFORE PLAYER")
     #print(enemy.position, "enemy position AFTER ENEMY BEFORE PLAYER")
-    print("No. of enemies after enemy move", Enemy.No_of_enemies)
+    #print("No. of enemies after enemy move", Enemy.No_of_enemies)
     do_all_checks()
-    board.display()
+    board.big_display()
+    time.sleep(0.3)
+    clear_screen()
     #board.display_objects()
     user_input = take_user_input("")
     do_all_actions(user_input)
     #print(player.position, "player position AFTER PLAYER")
     #print(enemy.position, "enemy position AFTER PLAYER")
     do_all_checks()
-    board.display()
+    board.big_display()
+    time.sleep(0.3)
+    clear_screen()
     #board.display_objects()
-    print("No. of enemies after player", Enemy.No_of_enemies)
+    #print("No. of enemies after player", Enemy.No_of_enemies)
     
     
-    print("No. of enemies after player and checks", Enemy.No_of_enemies)
+    #print("No. of enemies after player and checks", Enemy.No_of_enemies)
     #time.sleep(1)
     #clear_screen()
+
+
+#DEBUGGING PURPOSES
+# def each_frame():  #I need to have threading here.
+    
+#     #print (player.position)
+#     for enemy in Enemy.enemies:
+#         enemy.move()
+#     #print(player.position,"player position AFTER ENEMY BEFORE PLAYER")
+#     #print(enemy.position, "enemy position AFTER ENEMY BEFORE PLAYER")
+#     #print("No. of enemies after enemy move", Enemy.No_of_enemies)
+#     do_all_checks()
+#     board.big_display()
+#     time.sleep(0.1)
+#     clear_screen()
+#     #board.display_objects()
+#     user_input = take_user_input("")
+#     do_all_actions(user_input)
+#     #print(player.position, "player position AFTER PLAYER")
+#     #print(enemy.position, "enemy position AFTER PLAYER")
+#     do_all_checks()
+#     board.big_display()
+#     time.sleep(0.1)
+#     clear_screen()
+#     #board.display_objects()
+#     #print("No. of enemies after player", Enemy.No_of_enemies)
+    
+    
+#     #print("No. of enemies after player and checks", Enemy.No_of_enemies)
+#     #time.sleep(1)
+#     #clear_screen()

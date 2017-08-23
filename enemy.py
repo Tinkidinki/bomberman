@@ -10,7 +10,7 @@ class Enemy(Board_Object):
 
     @staticmethod
     def all_dead():
-        print("IN ALL DEAD FUNCTION", Enemy.No_of_enemies)
+        #print("IN ALL DEAD FUNCTION", Enemy.No_of_enemies)
         if Enemy.No_of_enemies == 0:
             return True
         else:

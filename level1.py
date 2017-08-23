@@ -68,7 +68,7 @@ board.update_positions()
 #     print()
 
 #print(Permanant_Wall)
-board.display()
+#board.display()
 #print(player.position)
 while True:
     each_frame()
