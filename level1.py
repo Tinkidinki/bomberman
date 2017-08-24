@@ -29,6 +29,9 @@ builtins.Nothing = Nothing
 from main import main
 builtins.main = main
 
+from generate_board import generate_board
+builtins.generate_board = generate_board
+
 builtins.player = Player()
 #print(player, "level1")
 #builtins.enemy = Enemy()
@@ -40,7 +43,7 @@ builtins.player = Player()
 
 #It might be useful to remove position argument completely for Nothing() and Permanant_Wall() objects
 #Oh god, this is circular. How did it take me this long to figure.
-
+'''
 level1_board = [[Nothing(),Nothing(),Nothing(),Nothing(),Nothing(),Nothing(),Nothing()],
 [Nothing(),Enemy(), Permanant_Wall(),player,Nothing(),Nothing(),Nothing()],
 [Nothing(),Nothing(),Nothing(),Brick_Wall(),Nothing(),Brick_Wall(),Nothing()],
@@ -48,10 +51,11 @@ level1_board = [[Nothing(),Nothing(),Nothing(),Nothing(),Nothing(),Nothing(),Not
 [Nothing(),Nothing(),Permanant_Wall(),Nothing(),Nothing(),Nothing(),Nothing()],
 [Nothing(),Permanant_Wall(),Nothing(),Nothing(),Brick_Wall(),Nothing(),Nothing()],
 [Nothing(),Nothing(),Nothing(),Nothing(),Nothing(),Nothing(),Nothing()]]
+'''
 
+dimensions = [10,10]
 
-dimensions = [7,7]
-
+level1_board = generate_board(dimensions,3,10)
 builtins.board = Board(level1_board,dimensions)
 
 #d

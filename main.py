@@ -112,7 +112,7 @@ def clear_screen():
 def each_frame():
     do_all_checks()
     board.big_display()
-    time.sleep(0.5)
+    time.sleep(0.3)
     clear_screen()
 
 def main(): 
