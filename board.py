@@ -42,6 +42,7 @@ class Board():
         print('X'*(self.dimensions[1]+2))
 
     def big_display(self):
+        
         #A symbol table for all symbols
         symbol =   {Permanant_Wall:"#", Brick_Wall:"/",Player: "B",Enemy: "E", Bomb:"O", Nothing:" ", "explosion":"e"}
         #the array to be printed
@@ -67,6 +68,12 @@ class Board():
             to_print[i+1][j+2] = ']'
             to_print[i+1][j+3] = ']'
 
+        def display_bomb(i,j):
+            for row in range(i,i+2):
+                for col in range(j,j+4):
+                    to_print[row][col] = bomb.display()
+
+
         #Filling up the array
         for i in range(self.dimensions[0]):
             for j in range(self.dimensions[1]):
@@ -76,12 +83,16 @@ class Board():
                 elif type(self.board[i][j])==Enemy:
                     display_enemy(i*2,j*4)
                     continue;
+                elif type(self.board[i][j])==Bomb:
+                    display_bomb(i*2,j*4)
+                    continue;
                 for small_i in range(i*2,i*2+2):
                     for small_j in range(j*4,j*4+4):
                         to_print[small_i][small_j] = symbol[type(self.board[i][j])] 
         
         #Putting the explosion in the right place if needed
         if Bomb.is_present():
+            bomb.display()
             if bomb.exploded():
                 for radius in bomb.radius:
                     if (board.is_within_board(radius)):

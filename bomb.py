@@ -36,6 +36,12 @@ class Bomb(Board_Object):
 
     def explosion_over(self):
         return (self.timer > Bomb.Ticking_time + Bomb.Exploding_time)
+
+    def display(self):
+        if (Bomb.Ticking_time >= self.timer):
+            return str(Bomb.Ticking_time - self.timer)
+        else:
+            return str(0)
         
 
     def die(self):

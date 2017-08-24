@@ -4,10 +4,11 @@ import threading
 import os
 import time
 import sys
-from asynchronous_input import get_char_keyboard_nonblock
+
 
 #--------created utilities----------
 # from input_char import getch
+from asynchronous_input import get_char_keyboard_nonblock
 
 #--------entities-------------------
 # from board_object import Board_Object
@@ -111,7 +112,7 @@ def clear_screen():
 def each_frame():
     do_all_checks()
     board.big_display()
-    time.sleep(0.3)
+    time.sleep(0.5)
     clear_screen()
 
 def main(): 

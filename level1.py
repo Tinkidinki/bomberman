@@ -41,14 +41,16 @@ builtins.player = Player()
 #It might be useful to remove position argument completely for Nothing() and Permanant_Wall() objects
 #Oh god, this is circular. How did it take me this long to figure.
 
-level1_board = [[Enemy(), Permanant_Wall(),player,Nothing(),Nothing()],
-[Nothing(),Nothing(),Brick_Wall(),Nothing(),Brick_Wall()],
-[Permanant_Wall(),Nothing(),Permanant_Wall(),Nothing(),Nothing()],
-[Nothing(),Permanant_Wall(),Nothing(),Nothing(),Nothing()],
-[Permanant_Wall(),Nothing(),Nothing(),Brick_Wall(),Nothing()]]
+level1_board = [[Nothing(),Nothing(),Nothing(),Nothing(),Nothing(),Nothing(),Nothing()],
+[Nothing(),Enemy(), Permanant_Wall(),player,Nothing(),Nothing(),Nothing()],
+[Nothing(),Nothing(),Nothing(),Brick_Wall(),Nothing(),Brick_Wall(),Nothing()],
+[Nothing(),Permanant_Wall(),Nothing(),Permanant_Wall(),Nothing(),Nothing(),Nothing()],
+[Nothing(),Nothing(),Permanant_Wall(),Nothing(),Nothing(),Nothing(),Nothing()],
+[Nothing(),Permanant_Wall(),Nothing(),Nothing(),Brick_Wall(),Nothing(),Nothing()],
+[Nothing(),Nothing(),Nothing(),Nothing(),Nothing(),Nothing(),Nothing()]]
 
 
-dimensions = [5,5]
+dimensions = [7,7]
 
 builtins.board = Board(level1_board,dimensions)
 
