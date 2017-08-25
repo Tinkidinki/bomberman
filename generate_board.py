@@ -18,12 +18,13 @@ def generate_board(dimensions,enemies_left,brick_walls_left):
     else:
         no_of_permanant_walls = ((dimensions[0]-1)//2)**2
 
-    for i in range(dimensions[0]*dimensions[1] - (enemies_left + brick_walls_left + no_of_permanant_walls + 1 )):
+    for i in range(dimensions[0]*dimensions[1] - (enemies_left + brick_walls_left + 
+                    no_of_permanant_walls + 1 )):
         choices.append('N')
 
     for row in range(dimensions[0]):
         for col in range(dimensions[1]):
-            
+
             #print("current iteration","[",row,",",col,"]")
 
             if (row==0 and col==0):
@@ -33,24 +34,20 @@ def generate_board(dimensions,enemies_left,brick_walls_left):
             if (row %2 != 0 and col %2 !=0):
                 board[row][col] = Permanant_Wall()
                 continue
-            
             else:
                 ob = random.choice(choices)
 
-                if (ob == 'E'):
+                if ob == 'E':
                     board[row][col] = Enemy()
                     enemies_left-=1
-                    
-                elif (ob == 'B'):
+
+                elif ob == 'B':
                     board[row][col] = Brick_Wall()
                     brick_walls_left-=1
-                
+
                 else:
                     board[row][col] = Nothing()
-                
+
                 choices.remove(ob)
 
     return board
-                    
-                    
-            

@@ -3,9 +3,6 @@ import sys
 import builtins
 import time
 
-from input_char import getch
-builtins.getch = getch
-
 from board_object import Board_Object
 builtins.Board_Object = Board_Object
 
@@ -38,43 +35,55 @@ builtins.generate_board = generate_board
 builtins.level = 1
 builtins.score = 0
 
+
 def Instructions():
-    print("Blah blah blah")
-    time.sleep(1)
+    print('''
+    Welcome to bomberman!
+    To move player, use a,s,d,w
+    To drop bomb, use b
+    To quit,press q
+    
+    You get 20 points for destroying walls
+    And 100 points for destroying enemies
+    
+    Destroy all enemies to win!
+    (Game starts in 10 seconds)
+    ''')
+    time.sleep(10)
     clear_screen()
 
 def win():
-    print ("YOU WIN!")
-    print ("YOUR FINAL SCORE: ",score)
+    print("YOU WIN!")
+    print("YOUR FINAL SCORE: ",score)
     sys.exit()
 
 
 def level_up():
     print(
-    '''
-    #           #########   #         #   ##########   #                #        #  #########   #
-    #           #           #         #   #            #                #        #  #       #   #
-    #           #           #         #   #            #                #        #  #       #   #
-    #           ########     #       #    ##########   #                #        #  #########   #
-    #           #             #     #     #            #                #        #  #           #
-    #           #              #   #      #            #                #        #  #          
-    ########    #########       ###       ##########   ##########       ##########  #           #
-    ''')
+        '''
+        #           #########   #         #   ##########   #                #        #  #########   #
+        #           #           #         #   #            #                #        #  #       #   #
+        #           #           #         #   #            #                #        #  #       #   #
+        #           ########     #       #    ##########   #                #        #  #########   #
+        #           #             #     #     #            #                #        #  #           #
+        #           #              #   #      #            #                #        #  #          
+        ########    #########       ###       ##########   ##########       ##########  #           #
+        ''')
     time.sleep(3)
     clear_screen()
     
     global level
-    level+=1
+    level += 1
 
     global score
-    score+=player.score
+    score += player.score
 
-    if (level == 3):
+    if level == 5:
         win()
 
-    dimensions = [level*3,level*3]
-    level_board = generate_board(dimensions,level,3*level)
-    builtins.board = Board(level_board,dimensions)
+    dimensions = [3 + level*2, 3 + level*2]
+    level_board = generate_board(dimensions, level, 3*level)
+    builtins.board = Board(level_board, dimensions)
     board.update_positions()
 
     while True:
@@ -82,13 +91,12 @@ def level_up():
 
 builtins.level_up = level_up
 
-
+#It all starts here!
 def start():
-    #print("level",level)
     Instructions()
-    dimensions = [3 + level*2,3 + level*2]
-    level_board = generate_board(dimensions,level,3*level)
-    builtins.board = Board(level_board,dimensions)
+    dimensions = [3 + level*2, 3 + level*2]
+    level_board = generate_board(dimensions, level, 3*level)
+    builtins.board = Board(level_board ,dimensions)
     board.update_positions()
 
     while True:
@@ -96,6 +104,4 @@ def start():
 
 start()
 
-        
-        
 

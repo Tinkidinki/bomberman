@@ -17,7 +17,7 @@ class Player(Board_Object):
     def __init__(self):
         Player.No_of_players+=1
         super(Player,self).__init__()
-        self.lives = 300 #Obviously bad coding style, I'll put this in a variable later
+        self.lives = 10 #Obviously bad coding style, I'll put this in a variable later
         self.score = 0
     
     def move(self, user_input):
