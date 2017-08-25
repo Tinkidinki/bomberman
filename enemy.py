@@ -21,6 +21,7 @@ class Enemy(Board_Object):
         super(Enemy,self).__init__()
         self.alive = True
         Enemy.enemies.append(self)
+        #print ("Enemy object was created")
     
     def move(self):
         left = [self.position[0],self.position[1]-1]

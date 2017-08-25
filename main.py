@@ -20,14 +20,10 @@ from asynchronous_input import get_char_keyboard_nonblock
 
 #----------------------------------
 
-def win():
-    print("YOU WIN")
-    print("YOUR FINAL SCORE",player.score)
-    sys.exit()
 
 def lose():
     print("YOU LOSE")
-    print("YOUR FINAL SCORE",player.score)
+    print("YOUR FINAL SCORE",score)
     sys.exit()
 
 
@@ -39,7 +35,7 @@ def do_all_checks():
     #print(player, "After global")
     #print (player.position, "in do all checks")
     if Enemy.all_dead():
-        win()
+        level_up()
     
     if Player.all_dead():
         lose()
@@ -101,6 +97,10 @@ def do_all_actions(user_input):
     
     elif user_input in ['a','s','d','w']:
         player.move(user_input)
+
+    elif user_input == 'q':
+        sys.exit()
+
     else:
         pass
     
@@ -117,7 +117,13 @@ def each_frame():
 
 def main(): 
     #moving enemy
+    # for i in range(board.dimensions[0]):
+    #     for j in range(board.dimensions[1]):
+    #         print (board.board[i][j],':',board.board[i][j].position,)
+    #     print()
+        
     for enemy in Enemy.enemies:
+        # print(enemy,':',enemy.position)
         enemy.move()
     #changing frame
     each_frame()

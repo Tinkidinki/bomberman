@@ -114,7 +114,7 @@ class Board():
         print(('#'*(self.dimensions[1]*4+4)))
 
         #Printing the score and lives:
-        print("SCORE:",player.score, "\tNO. OF LIVES:",player.lives)
+        print("LEVEL:",level, "\tSCORE:",player.score, "\tNO. OF LIVES:",player.lives)
         
 
     def update_positions(self):
