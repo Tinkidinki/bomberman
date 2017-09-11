@@ -49,7 +49,7 @@ def Instructions():
     Destroy all enemies to win!
     (Game starts in 10 seconds)
     ''')
-    time.sleep(10)
+    time.sleep(1)
     clear_screen()
 
 def win():
