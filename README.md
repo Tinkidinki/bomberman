@@ -15,8 +15,8 @@
 
 
 ## Actions
-- To move around player, use: `a`, `s`, `d`, `w` 
-- To drop a bomb, use: `b`
+- To move around player, press: `a`, `s`, `d`, `w` 
+- To drop a bomb, press: `b`
 - To quit, press `q`
 
 ## Scoring
@@ -31,10 +31,10 @@
 - Bomb counts down to blast off 
 
 ## Object-oriented programming features demonstrated:
-1) Modularity implemented (several modules)
-2) Inheritance (All board objects inherit from the board_object class)
-3) Encapsulation (Use of classes)
-4) Polymorphism (both player and enemy move, but move differently)
+- Modularity implemented (several modules)
+- Inheritance (All board objects inherit from the board_object class)
+- Encapsulation (Use of classes)
+- Polymorphism (both player and enemy move, but move differently)
 
 
 
