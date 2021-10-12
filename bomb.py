@@ -29,7 +29,7 @@ class Bomb(Board_Object):
 
         self.radius = []
 
-        def pos(side,i):
+        def pos(i):
             return {'left':[self.position[0],self.position[1]-i],
                     'right':[self.position[0],self.position[1]+i],
                     'up':[self.position[0]-i, self.position[1]],
@@ -40,26 +40,34 @@ class Bomb(Board_Object):
         side_check = ['left','up','right','down']
         i=0
         radius_covered = 0
-        while True:
-            if sides==[]:
-                break
-            i+=1
-            for side in sides:
-                if not board.is_within_board(pos(side,i)[side]) or not board.is_empty(pos(side,i)[side]):
-                    sides.remove(side)
-                    print (sides)
 
-                
-                else:
-                    self.radius.append(pos(side,i)[side])
-                    print (side,i)
-                    radius_covered+=1
-                    if (radius_covered==4):
-                        break
-            else:
-                continue
-            
-            break
+        #while True:
+        #    if sides==[]:
+        #        break
+        #    i+=1
+        #    for side in sides:
+        #        if not board.is_within_board(pos(side,i)[side]) or not board.is_bombable(pos(side,i)[side]):
+        #            sides.remove(side)
+        #            print (sides)
+
+        #        
+        #        else:
+        #            self.radius.append(pos(side,i)[side])
+        #            print (side,i)
+        #            radius_covered+=1
+        #            if (radius_covered==4):
+        #                break
+        #    else:
+        #        continue
+        #    
+        #    break
+
+        for side in sides:
+            if not board.is_within_board(pos(1)[side]) or not board.is_bombable(pos(1)[side]):
+                side_check.remove(side)
+
+        for side in side_check:
+            self.radius.append(pos(1)[side])
             
                     
             

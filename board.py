@@ -10,10 +10,12 @@ class Board():
         return (position[0] >= 0 and position[0] < self.dimensions[0] 
                 and position[1] >= 0 and position[1] < self.dimensions[1])
 
+    def is_bombable(self, position):
+        return isinstance(self.board[position[0]][position[1]],Nothing) or isinstance(self.board[position[0]][position[1]],Player) or isinstance(self.board[position[0]][position[1]],Enemy) or isinstance(self.board[position[0]][position[1]],Brick_Wall)
+
     def is_empty(self, position):
-        return (isinstance(self.board[position[0]][position[1]],Nothing) 
-                or isinstance(self.board[position[0]][position[1]],Player) 
-                or isinstance(self.board[position[0]][position[1]],Enemy))
+        return isinstance(self.board[position[0]][position[1]],Nothing) or isinstance(self.board[position[0]][position[1]],Player) or isinstance(self.board[position[0]][position[1]],Enemy) 
+
 
 
     def big_display(self):

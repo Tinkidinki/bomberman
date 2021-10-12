@@ -1,26 +1,39 @@
-Welcome to the bomberman game!
+# Bomberman Game 
 
-Written using:
-Python 3
+## Usage
+- Clone the repository
+- In the repository, do
+```python3 start_here.py```
 
-To run:
-Inside the folder do:
-python start_here.py
+## Instructions
+![gameplay](gameplay.png)
 
-Enjoy!
+Player: the one with these eyes: ^ ^
+Enemy: the one with these eyes: X X
+Brick wall: shown using '///' symbol 
 
-Special features of game:
-1) Random level generation: It's never the same every time you play it!
-2) Asynchronous enemy movement: Enemy does not wait for you!
-3) Bomb counts down to blast off.
+- To move around player, use: `a`, `s`, `d`, `w` 
+- To drop a bomb, use: `b`
+- To quit, press `q`
 
-The countdown time has been changed to keep up with the frame speed.
+## Scoring
+- +20 points for destroying a brick wall
+- +100 points for destroying an enemy
+- To win: destroy all enemies!
 
-Features of code:
+## Game features
+- Random board generation every time you play.
+- Asynchronous enemy movement 
+- Multilevel game (a total of 4 levels)
+- Bomb counts down to blast off 
+
+## Object-oriented programming features demonstrated:
 1) Modularity implemented (several modules)
 2) Inheritance (All board objects inherit from the board_object class)
 3) Encapsulation (Use of classes)
 4) Polymorphism (both player and enemy move, but move differently)
 
-Please send a PR if you want to contribute!
+
+
+
 
