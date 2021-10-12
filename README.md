@@ -5,13 +5,16 @@
 - In the repository, do
 ```python3 start_here.py```
 
-## Instructions
-![gameplay](gameplay.png)
+<p align="center">
+  <img src="gameplay.png" />
+</p>
 
-Player: the one with these eyes: ^ ^
-Enemy: the one with these eyes: X X
-Brick wall: shown using '///' symbol 
+- Player: the one with these eyes: `^^`
+- Enemy: the one with these eyes: `XX`
+- Brick wall: shown using `///` symbol 
 
+
+## Actions
 - To move around player, use: `a`, `s`, `d`, `w` 
 - To drop a bomb, use: `b`
 - To quit, press `q`
