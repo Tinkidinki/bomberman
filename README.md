@@ -32,7 +32,7 @@
 
 ## Object-oriented programming features demonstrated:
 - Modularity implemented (several modules)
-- Inheritance (All board objects inherit from the board_object class)
+- Inheritance (All board objects inherit from the `board_object` class)
 - Encapsulation (Use of classes)
 - Polymorphism (both player and enemy move, but move differently)
 
